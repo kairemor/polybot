@@ -1,0 +1,11 @@
+extends partials/head
+block content
+    div(class="container")
+    h3 #{title}
+    form(action="/api/basket", class="form" method="POST")
+        label(for="total") Entrer le nombre de points 
+        input(type="number", name="total",id="total", class="form-control", required)
+        label(for="joueur") Entre le nom du joeur
+        input(type="text", name="joueur",id="joueur", class="form-control" required)
+        br
+        input(type="submit", value="Envoyer", class="form-control")

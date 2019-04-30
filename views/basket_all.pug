@@ -1,0 +1,9 @@
+extends partials/head 
+block content  
+    h3 #{title}
+    br
+    lu
+        for item in baskets
+            p #{item.total} points ==> #{item.joueur} 
+    a(href="/basket/update") Modiier le nombre de point d'un joueur
+    a(href="/basket/add") Ajouter un nouveau

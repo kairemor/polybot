@@ -130,8 +130,8 @@ router.get('/basket', (req, res) => {
 	let msg = []
 	Basket.find()
 		.then(data => {
-			data.forEach(element => {
-				let ch = " \n " + element.Classement + " => " + element.Joueur + "  avec " + element.TOTAL + " points  \n ";
+			data.forEach((element, index) => {
+				let ch = " \n " + (index + 1) + " => " + element.joueur + "  avec " + element.total + " points  \n ";
 				msg.push(ch)
 			});
 			res.json({

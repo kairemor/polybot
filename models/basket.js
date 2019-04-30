@@ -7,7 +7,8 @@ const basketSchema = new mongoose.Schema({
     },
     joueur: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     }
 })
 

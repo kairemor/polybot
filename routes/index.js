@@ -2,31 +2,39 @@
 const express = require('express');
 const router = express.Router();
 
+const Basket = require('../models/basket')
+const Repas = require('../models/repas')
+const BDE = require('../models/basket')
 
-/*  This is the home route. It renders the index.mustache page from the views directory.
-	Data is rendered using the Mustache templating engine. For more
-	information, view here: https://mustache.github.io/#demo */
 router.get("/", (req, res) => {
 	res.render("home", {
 		title: "Bienvenue : Page de Gestion de polytechbot",
 	});
 
 });
-router.get("/profile", (req, res) => {
-	Profile.findOne(req.query)
-		.then(profile => {
-			res.render("profile", {
-				text: 'c"est une texe dans le render',
-				profile: profile
-			});
-		})
-});
-router.get("/restau", (req, res) => {
+router.get("/repas", (req, res) => {
 	res.render("restau", {
 		title: "Restauration"
 	});
 
 });
+router.get("/repas/all", (req, res) => {
+	Repas.find()
+		.then(repas => {
+			res.render("restau_plat", {
+				title: "Le menu de ce mois",
+				plats: repas
+			});
+		})
+
+});
+router.get("/repas/update", (req, res) => {
+	res.render("restau_update", {
+		title: "Modifer le plat d'un jour"
+	});
+
+});
+
 
 router.get('/basket', (req, res) => {
 	res.render('basket', {
@@ -34,20 +42,28 @@ router.get('/basket', (req, res) => {
 	})
 })
 
-router.get('/taximan', (req, res) => {
-	res.render('taximan', {
-		title: "Gestion numero de taxima"
+router.get('/basket/add', (req, res) => {
+	res.render('basket_add', {
+		title: "Ajouter un nouveau scorer en Basket"
 	})
 })
 
-/*  This route render json data */
-router.get("/json", (req, res) => {
-	res.json({
-		confirmation: "success",
-		app: process.env.TURBO_APP_ID,
-		data: "this is a sample json route."
-	});
-});
+router.get('/basket/all', (req, res) => {
+	Basket.find()
+		.then(scorer => {
+			res.render('basket_all', {
+				title: "Liste des marqueurs en basket",
+				baskets: scorer
+			})
+		})
+})
+
+router.get('/taximan', (req, res) => {
+	res.render('taximan', {
+		title: "Gestion numero de taximan"
+	})
+})
+
 
 /*  This route sends text back as plain text. */
 router.get("/send", (req, res) => {

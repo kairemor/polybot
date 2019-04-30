@@ -6,3 +6,21 @@ body {
 a {
   color: #00B7FF;
 }
+
+#desc {
+  width: 15em;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: whitesmoke;
+  padding: 1em;
+  text-align: left;
+  border: 1px solid black;
+  padding: 1em;
+}
+
+td {
+  border: 1px solid black;
+  padding: 1em;
+}
