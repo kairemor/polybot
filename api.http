@@ -189,3 +189,33 @@ Content-Type: application/json
     "total" : 120 ,
     "joueur" : "Lamine Sene"
 }
+
+###
+POST  http://localhost:3000/api/taximan
+Content-Type: application/json
+
+{
+    "name":"taximan1", 
+    "number": 763845533
+}
+
+###
+GET http://localhost:3000/api/taximan 
+
+###
+
+GET http://localhost:3000/api/taximan/one
+
+###
+POST  http://localhost:3000/api/voiture
+Content-Type: application/json
+
+{
+    "name": "Petit bus", 
+    "photo" : "", 
+    "itineraire" : "EDK -- Garage -- Malick SY -- Rectorat UT -- Prison Dixieme -- UFR Sante -- Croix Rouge -- Marche -- Saint Gab -- Rond Point Nguinte -- Rond Point Ecobank -- Mairie <----> Retour",
+    "heure" : "12h-10mn  ---- 14h-10mn ---- 18h10"
+}
+
+####
+GET http://localhost:3000/api/voiture

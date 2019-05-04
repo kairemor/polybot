@@ -2,9 +2,12 @@
 const express = require('express');
 const router = express.Router();
 
-const Basket = require('../models/basket')
 const Repas = require('../models/repas')
-const BDE = require('../models/basket')
+const ApreRepas = require('../models/repas_appre')
+const BDE = require('../models/bde')
+const Basket = require('../models/basket')
+const Taximan = require('../models/taximan')
+const Voiture = require('../models/voiture')
 
 router.get("/", (req, res) => {
 	res.render("home", {
@@ -61,6 +64,20 @@ router.get('/basket/all', (req, res) => {
 router.get('/taximan', (req, res) => {
 	res.render('taximan', {
 		title: "Gestion numero de taximan"
+	})
+})
+router.get('/taximan/all', (req, res) => {
+	Taximan.find()
+		.then(taximans => {
+			res.render('all_taximan', {
+				title: "Tous les numeros de taximan",
+				taximans: taximans
+			})
+		})
+})
+router.get('/taximan/new', (req, res) => {
+	res.render('add_taximan', {
+		title: "Ajouter un numero de taximan"
 	})
 })
 

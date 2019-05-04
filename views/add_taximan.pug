@@ -1,0 +1,16 @@
+extends partials/head 
+block content 
+    h2 #{title}
+
+    form(action="/api/taximan" method="POST" class="form")
+        label Entrer le nom 
+        input(type="text" name="name" class="form-control")
+        label Enter le numero
+        input(type="number" name="number" class="form-control")
+        input(type="submit", value="Ajouter" class="btn btn-success mt-2")
+
+    a(href="/taximan/all") Voir la liste des numero de taximan
+    br
+    a(href="/taximan/update") Modifier le numero d'un taximan
+    br
+    a(href="/taximan/delete") Supprimer le numero d'un taximan 

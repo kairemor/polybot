@@ -4,9 +4,11 @@ const router = express.Router();
 const multer = require('multer')
 
 const Repas = require('../models/repas')
+const ApreRepas = require('../models/repas_appre')
 const BDE = require('../models/bde')
 const Basket = require('../models/basket')
-
+const Taximan = require('../models/taximan')
+const Voiture = require('../models/voiture')
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, './uploads/')
@@ -95,6 +97,17 @@ router.post('/repas', (req, res, next) => {
 		.catch(err => console.log(err))
 })
 
+router.post('/repas/apre', (req, res, next) => {
+	ApreRepas.create(req.body)
+		.then(appre => {
+			res.json(appre)
+		})
+		.catch(err => console.log(err))
+})
+
+
+
+
 
 // router.get('/bde/', (res, res, next) => {
 // 	BDE.find()
@@ -140,6 +153,7 @@ router.get('/basket', (req, res) => {
 				}, ]
 			})
 		})
+		.catch(err => console.log(err))
 })
 router.post('/basket', (req, res) => {
 	Basket.create(req.body)
@@ -151,4 +165,64 @@ router.post('/basket', (req, res) => {
 		})
 		.catch(err => console.log(err))
 })
+
+router.route('/taximan')
+	.get((req, res, next) => {
+		Taximan.find()
+			.then(taximan => {
+				res.json(taximan)
+			})
+			.catch(err => console.log(err))
+	})
+	.post((req, res, next) => {
+		Taximan.create(req.body)
+			.then(data => {
+				res.json({
+					status: true,
+					msg: 'Create with succees',
+					data: data
+				})
+			})
+			.catch(err => console.log(err))
+	})
+router.get('/taximan/one', (req, res, next) => {
+	Taximan.aggregate([{
+			$sample: {
+				size: 1
+			}
+		}])
+		.then(taximan => {
+			res.json({
+				set_attributes: taximan
+			})
+		})
+		.catch(err => console.log(err))
+})
+
+router.route('/voiture')
+	.post((req, res, next) => {
+		Voiture.create(req.body)
+			.then(voiture => {
+				res.json(voiture)
+			})
+			.catch(err => console.log(err))
+	})
+	.get((req, res, next) => {
+		let query = req.query
+		let msg = []
+		Voiture.find(query)
+			.then(voiture => {
+				voiture.forEach(voiture => {
+					let ch = voiture.name + " \n A comme heure de depart : " + voiture.heure + "\n Les itineraires : " + voiture.itineraire + "\n"
+					msg.push(ch)
+				})
+				res.json({
+					messages: [{
+						"text": msg.join(" ")
+					}, ]
+				})
+			})
+			.catch(err => console.log(err))
+	})
+
 module.exports = router

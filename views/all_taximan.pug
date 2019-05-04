@@ -1,7 +1,8 @@
 extends partials/head 
 block content 
-    h2 #{title}
-    a(href="/taximan/all") Voir la liste des numero de taximan
+    for item in taximans
+        p #{item.name} : #{item.number} 
+    
     br
     a(href="/taximan/new") Ajouter un nouveau taximan
     br
