@@ -219,3 +219,14 @@ Content-Type: application/json
 
 ####
 GET http://localhost:3000/api/voiture
+
+### 
+POST http://polytechbot.herokuapp.com/api/voiture 
+Content-Type: application/json
+
+{
+    "name": "Petit bus", 
+    "photo" : "", 
+    "itineraire" : "EDK -- Garage -- Malick SY -- Rectorat UT -- Prison Dixieme -- UFR Sante -- Croix Rouge -- Marche -- Saint Gab -- Rond Point Nguinte -- Rond Point Ecobank -- Mairie <----> Retour",
+    "heure" : "12h-10mn  ---- 14h-10mn ---- 18h10"
+}

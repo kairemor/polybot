@@ -186,14 +186,21 @@ router.route('/taximan')
 			.catch(err => console.log(err))
 	})
 router.get('/taximan/one', (req, res, next) => {
+	let msg = []
 	Taximan.aggregate([{
 			$sample: {
 				size: 1
 			}
 		}])
 		.then(taximan => {
+			taximan.forEach(taxi => {
+				let ch = "Voici un numero de taximan joignable a Thies : " + taxi.number
+				msg.push(ch)
+			})
 			res.json({
-				set_attributes: taximan
+				messages: [{
+					"text": msg.join(" ")
+				}, ]
 			})
 		})
 		.catch(err => console.log(err))
