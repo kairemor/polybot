@@ -42,7 +42,7 @@ Content-Type: application/json
 {
     "prenom":"mouhamed",
     "nom":"tall",
-    "poste":"tresorier",
+    "poste":"president",
     "numero":774542323,
     "email":"agoraept@hotmail.fr"
 }

@@ -121,7 +121,7 @@ router.post('/repas/apre', (req, res, next) => {
 
 router.get('/bde', (req, res) => {
 	const query = req.query;
-	BDE.find(query)
+	BDE.findOne(query)
 		.then(data => {
 			res.json({
 				set_attributes: data
