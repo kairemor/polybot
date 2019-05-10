@@ -9,6 +9,7 @@ const BDE = require('../models/bde')
 const Basket = require('../models/basket')
 const Taximan = require('../models/taximan')
 const Voiture = require('../models/voiture')
+const SugRepas = require('../models/sugRepas')
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
 		cb(null, './uploads/')
@@ -227,6 +228,26 @@ router.route('/voiture')
 					messages: [{
 						"text": msg.join(" ")
 					}, ]
+				})
+			})
+			.catch(err => console.log(err))
+	})
+
+router.route('/sugrepas')
+	.get((req, res, next) => {
+		SugRepas.find()
+			.then(data => {
+				res.json(data)
+			})
+			.catch(err => console.log(err))
+	})
+	.post((req, res, next) => {
+		SugRepas.create(req.body)
+			.then(data => {
+				res.json({
+					status: true,
+					msg: 'Suggestion added',
+					data: data
 				})
 			})
 			.catch(err => console.log(err))

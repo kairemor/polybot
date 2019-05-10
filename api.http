@@ -230,3 +230,16 @@ Content-Type: application/json
     "itineraire" : "EDK -- Garage -- Malick SY -- Rectorat UT -- Prison Dixieme -- UFR Sante -- Croix Rouge -- Marche -- Saint Gab -- Rond Point Nguinte -- Rond Point Ecobank -- Mairie <----> Retour",
     "heure" : "12h-10mn  ---- 14h-10mn ---- 18h10"
 }
+
+###
+POST http://localhost:3000/api/sugrepas
+Content-Type: application/json
+
+{
+    "day":"Mardi",
+    "author":"Kairemor", 
+    "content": "C'est le contenu de notre suggestion"
+}
+
+###
+GET http://localhost:3000/api/sugrepas
