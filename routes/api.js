@@ -36,7 +36,7 @@ router.get('/repas/toText', (req, res, next) => {
 		.then(repas => {
 			repas.forEach(element => {
 				console.log()
-				let ch = " \n Les repas de " + element.day + " sont : \n " + "Dejeuner : " + element.repas + "\n" + " Diner : " + element.diner + " \n \n ";
+				let ch = " \n Les repas de " + element.day + " sont : \n " + "Diner : " + element.repas + "\n" + " Xeudd : " + element.diner + " \n \n ";
 				console.log(ch);
 				msg.push(ch)
 			});
