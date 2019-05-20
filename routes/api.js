@@ -2,6 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer')
+const cors =  require('cors')()
 
 const Repas = require('../models/repas')
 const ApreRepas = require('../models/repas_appre')
@@ -9,6 +10,7 @@ const BDE = require('../models/bde')
 const Basket = require('../models/basket')
 const Taximan = require('../models/taximan')
 const Voiture = require('../models/voiture')
+const Todo = require('../models/todo')
 const SugRepas = require('../models/sugRepas')
 const storage = multer.diskStorage({
 	destination: (req, file, cb) => {
@@ -21,7 +23,7 @@ const storage = multer.diskStorage({
 const upload = multer({
 	storage: storage
 })
-router.get('/repas', (req, res, next) => {
+router.get('/repas', cors, (req, res, next) => {
 	Repas.find()
 		.then(repas => {
 			res.json({
@@ -252,5 +254,38 @@ router.route('/sugrepas')
 			})
 			.catch(err => console.log(err))
 	})
+
+router.route('/todos')
+.get(cors, (req, res, next) => {
+	Todo.find()
+	.then(todos => {
+		res.json({
+			msg:'sucees all todos',
+			data: todos
+		})
+	})
+	.catch(err => console.log(err))
+})
+.post(cors, (req, res, next) => {
+	Todo.create(req.body)
+	.then(todo => {
+		res.json({
+			msg:'create succes',
+			data: todo
+		})
+	})
+	.catch(err => console.log(err))
+})
+router.delete('/todos/:id', cors, (req, res, next) => {
+	Todo.findByIdAndDelete(req.params.id)
+	.then(todo => {
+		res.json({
+			msg:'deleted success',
+			data: todo
+		})
+	})
+	.catch(err => console.log(err))
+})
+
 
 module.exports = router

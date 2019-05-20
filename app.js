@@ -7,7 +7,7 @@ const mongoose = require('mongoose')
 const url = 'mongodb://localhost:27017/polytechbot'
 const url1 = 'mongodb+srv://kairemor:987654321@mongo-proj-qzrmj.mongodb.net/test?retryWrites=true'
 
-const connect = mongoose.connect(url1, {
+const connect = mongoose.connect(url, {
   useNewUrlParser: true
 })
 connect.then(db => console.log("Connected to db"))

@@ -243,3 +243,30 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000/api/sugrepas
+
+###
+POST https://polytechbot.herokuapp.com/api/sugrepas
+Content-Type: application/json
+
+{
+    "day":"Mardi",
+    "author":"Kairemor", 
+    "content": "C'est le contenu de notre suggestion"
+}
+
+###
+GET http://localhost:3000/api/todos
+
+###
+GET http://localhost:3000/api/repas
+
+###
+POST http://localhost:3000/api/todos
+Content-Type: application/json
+
+{
+    "title":"learn angular",
+    "completed":"false"
+}
+###
+DELETE  http://localhost:3000/api/todos/5ce2f521bfe78d3bb4c2b478
