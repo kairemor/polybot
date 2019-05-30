@@ -3,7 +3,8 @@ const express = require("express");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
-const mongoose = require('mongoose')
+const mongoose = require('mongoose'); 
+const cors = require('cors')
 const url = 'mongodb://localhost:27017/polytechbot'
 const url1 = 'mongodb+srv://kairemor:987654321@mongo-proj-qzrmj.mongodb.net/test?retryWrites=true'
 
@@ -26,6 +27,7 @@ app.set("view engine", "pug");
 
 app.use(logger("dev"));
 app.use(express.json());
+app.use(cors())
 app.use(express.static("uploads"));
 
 app.use(express.urlencoded({
