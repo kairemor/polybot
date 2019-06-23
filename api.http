@@ -258,15 +258,35 @@ Content-Type: application/json
 GET http://localhost:3000/api/todos
 
 ###
-GET http://localhost:3000/api/repas
-
-###
 POST http://localhost:3000/api/todos
 Content-Type: application/json
 
 {
-    "title":"learn angular",
+    "title":"learn python",
+    "completed":"false"
+}
+###
+GET http://localhost:3000/api/todos/complete/5ce2f4ca9689393b7956838b
+
+###
+GET http://localhost:3000/api/todos/uncomplete/5ce2f4ca9689393b7956838b
+
+###
+GET http://localhost:3000/api/repas
+
+###
+POST https://polytechbot.herokuapp.com/api/todos
+Content-Type: application/json
+
+{
+    "title":"learn python",
     "completed":"false"
 }
 ###
 DELETE  http://localhost:3000/api/todos/5ce2f521bfe78d3bb4c2b478
+
+###
+GET https://polytechbot.herokuapp.com/api/todos
+
+###
+DELETE  https://polytechbot.herokuapp.com/api/todos/5ce2f823b9382d0017a955f6
