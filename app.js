@@ -4,19 +4,19 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require('mongoose');
-const cors = require('cors')
-const url = 'mongodb://localhost:27017/polytechbot'
-const url1 = 'mongodb+srv://kairemor:987654321@mongo-proj-qzrmj.mongodb.net/test?retryWrites=true'
+const cors = require('cors');
+const url = 'mongodb://localhost:27017/polytechbot';
+const url1 = 'mongodb+srv://kairemor:987654321@mongo-proj-qzrmj.mongodb.net/test?retryWrites=true';
 
-const connect = mongoose.connect(url1, {
+const connect = mongoose.connect(url, {
   useNewUrlParser: true
-})
+});
 connect.then(db => console.log("Connected to db"))
-  .catch(err => console.log(err))
+  .catch(err => console.log(err));
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
-const apiRouter = require('./routes/api')
+const apiRouter = require('./routes/api');
 
 
 const app = express();
@@ -27,7 +27,7 @@ app.set("view engine", "pug");
 
 app.use(logger("dev"));
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 app.use(express.static("uploads"));
 
 app.use(express.urlencoded({
