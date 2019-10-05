@@ -22,6 +22,11 @@ const storage = multer.diskStorage({
 const upload = multer({
 	storage: storage
 });
+
+const accountSid = 'ACf7f1a5985ff51521a5fdf13da30dbf45';
+const authToken = 'd4d32a1d0980c0211cdb17024e1d301e';
+const client = require('twilio')(accountSid, authToken);
+
 router.get('/repas', cors, (req, res, next) => {
 	Repas.find()
 		.then(repas => {
@@ -266,6 +271,20 @@ router.route('/todos')
 					msg: 'create succes',
 					data: todo
 				});
+				let toSend = new Date(todo.date).getTime() - Date.now();
+				toSend -= 300000;
+				console.log(toSend);
+				if (toSend > 0) {
+					setTimeout(() => {
+						client.messages
+							.create({
+								body: `La tache ${todo.title} est a faire dans 5 mn`,
+								from: '+19384448447',
+								to: '+221763797367'
+							})
+							.then(message => console.log(message.sid));
+					}, toSend);
+				}
 			})
 			.catch(err => console.log(err));
 	})
