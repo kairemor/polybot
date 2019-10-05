@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 const sugChemat = new mongoose.Schema({
     day: {
         type: String,
@@ -14,8 +14,8 @@ const sugChemat = new mongoose.Schema({
     },
 }, {
     timestamps: true
-})
+});
 
-const SugRepas = mongoose.model('sugrepas', sugChemat)
+const SugRepas = mongoose.model('sugrepas', sugChemat);
 
-module.exports = SugRepas
+module.exports = SugRepas;

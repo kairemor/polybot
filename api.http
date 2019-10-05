@@ -263,7 +263,8 @@ Content-Type: application/json
 
 {
     "title":"learn python",
-    "completed":"false"
+    "completed":"false",
+    "date":"2019-12-12T12:00:00"
 }
 ###
 GET http://localhost:3000/api/todos/complete/5ce2f4ca9689393b7956838b
@@ -272,7 +273,7 @@ GET http://localhost:3000/api/todos/complete/5ce2f4ca9689393b7956838b
 GET http://localhost:3000/api/todos/uncomplete/5ce2f4ca9689393b7956838b
 
 ###
-GET http://localhost:3000/api/repas
+GET http://localhost:3000/api/todos
 
 ###
 POST https://polytechbot.herokuapp.com/api/todos

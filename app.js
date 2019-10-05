@@ -5,10 +5,10 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require('mongoose');
 const cors = require('cors');
-const url = 'mongodb://localhost:27017/polytechbot';
+// const url = 'mongodb://localhost:27017/polytechbot';
 const url1 = 'mongodb+srv://kairemor:987654321@mongo-proj-qzrmj.mongodb.net/test?retryWrites=true';
 
-const connect = mongoose.connect(url, {
+const connect = mongoose.connect(url1, {
   useNewUrlParser: true
 });
 connect.then(db => console.log("Connected to db"))
