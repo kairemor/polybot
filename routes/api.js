@@ -280,14 +280,24 @@ router.route('/todos')
 							.create({
 								body: `La tache ${todo.title} est a faire dans 5 mn`,
 								from: '+19384448447',
-								to: '+221763797367'
+								to: '+221761466107'
 							})
 							.then(message => console.log(message.sid));
 					}, toSend);
 				}
 			})
 			.catch(err => console.log(err));
-	})
+	});
+
+router.get('/todos/:id', cors, async (req, res, next) => {
+	try {
+		const todo = await Todo.findById(req.params.id);
+		res.json(todo);
+	} catch (error) {
+		res.sendStatus(404).send("not found");
+	}
+})
+
 router.delete('/todos/:id', cors, (req, res, next) => {
 	Todo.findByIdAndDelete(req.params.id)
 		.then(todo => {
