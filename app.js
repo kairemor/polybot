@@ -1,13 +1,14 @@
 const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
+require('dotenv').config()
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require('mongoose');
 const cors = require('cors');
 // const url = 'mongodb://localhost:27017/polytechbot';
 //const url1 = 'mongodb+srv://kairemor:987654321@mongo-proj-qzrmj.mongodb.net/test?retryWrites=true';
-const url1 = process.env.BACKEND_DB_URI
+const url1 = process.env.DB_URI
 
 const connect = mongoose.connect(url1, {
   useNewUrlParser: true
